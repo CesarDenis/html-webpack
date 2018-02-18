@@ -38,6 +38,15 @@ module.exports = {
             }
           ]
         })
+      },
+      {
+        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
+        include: path.resolve(__dirname, 'src'),
+        loader: 'url-loader',
+        options: {
+          limit: 4096,
+          name: '[path][name].[ext]'
+        }
       }
     ]
   },
