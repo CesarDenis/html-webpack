@@ -4,6 +4,8 @@ const localServer = {
 };
 
 const path = require('path');
+
+const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
@@ -21,9 +23,25 @@ module.exports = {
     rules: [
       {
         enforce: 'pre',
+        test: /\.js$/,
+        include: path.resolve(__dirname, 'src'),
+        use: 'eslint-loader'
+      },
+      {
+        enforce: 'pre',
         test: /\.(js|s?[ca]ss)$/,
         include: path.resolve(__dirname, 'src'),
         loader: 'import-glob'
+      },
+      {
+        test: /\.js$/,
+        exclude: [/node_modules(?![/|\\](bootstrap|foundation-sites))/],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env']
+          }
+        }
       },
       {
         test: /\.scss$/,
@@ -61,6 +79,12 @@ module.exports = {
     new ExtractTextPlugin({
       filename: `styles/[name].css`,
       disable: process.env.NODE_ENV === 'development'
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      Popper: 'popper.js/dist/umd/popper.js'
     }),
     new BrowserSyncPlugin({
       host: localServer.path,

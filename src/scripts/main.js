@@ -1,4 +1,6 @@
 // Import everything from autoload
 import './autoload/**/*';
 
-console.log('Hello World!');
+$(function() {
+  console.log('Hello from jQuery!');
+});
