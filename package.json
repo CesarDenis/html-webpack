@@ -1,0 +1,40 @@
+{
+  "name": "html-webpack",
+  "version": "1.0.0",
+  "description": "Webpack based build boilerplate for front-end developers",
+  "author": "Cesar Denis <cesar@cesardenis.com>",
+  "homepage": "https://github.com/CesarDenis/html-webpack#readme",
+  "keywords": [
+    "boilerplate",
+    "front-end",
+    "webpack"
+  ],
+  "main": "src/index.html",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "start": "webpack --watch --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CesarDenis/html-webpack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CesarDenis/html-webpack/issues"
+  },
+  "dependencies": {
+    "bootstrap": "4.0.0",
+    "jquery": "3.3.1",
+    "popper.js": "1.12.9"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "0.1.18",
+    "eslint": "4.18.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-prettier": "2.6.0",
+    "prettier": "1.10.2",
+    "webpack": "3.11.0"
+  },
+  "license": "MIT"
+}
