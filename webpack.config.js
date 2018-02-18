@@ -4,6 +4,8 @@ const localServer = {
 };
 
 const path = require('path');
+
+const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
@@ -61,6 +63,12 @@ module.exports = {
     new ExtractTextPlugin({
       filename: `styles/[name].css`,
       disable: process.env.NODE_ENV === 'development'
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      Popper: 'popper.js/dist/umd/popper.js'
     }),
     new BrowserSyncPlugin({
       host: localServer.path,
